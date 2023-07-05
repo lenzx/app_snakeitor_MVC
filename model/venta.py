@@ -43,6 +43,7 @@ class Venta(DB):
             self.connect.commit()
             print('el costo de habitacion a sido agregado')
         except Exception as e:
+            
             print("Error: ", e.args)
 
     def verVentas(self):

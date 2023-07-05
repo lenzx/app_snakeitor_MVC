@@ -12,6 +12,7 @@ from view.ventas_view import VentasView
 from controller.maquina_controller import MaquinaController
 from controller.productos_controller import ProductoController
 from controller.ventas_controller import VentasController
+from model.producto import Producto
 
 class Interfaz:
     def __init__(self):
@@ -19,15 +20,13 @@ class Interfaz:
         self.__productoView = ProductoView()
         self.__ventaView = VentasView()
         self.__maquinaController = MaquinaController()
-        self.__productoController = ProductoController()
-        self.__ventaController = VentasController()
         self.inicia()
-    def menuUsuario(self):
+    def menuUsuario(self,productos):
         self.__maquinaView.tituloView()
-        self.__productoView.productosDisponibles(self.__productoController.verProductos(),self.__maquinaController.saldoActual())
+        self.__productoView.productosDisponibles(productos,self.__maquinaController.saldoActual())
         self.__maquinaView.saldoView(self.__maquinaController.saldoActual())
         self.__maquinaView.dineroAdmitidoView(self.__maquinaController.dineroAdmitido())
-        self.__maquinaView.opcionesView(self.__productoController.verProductos())
+        self.__maquinaView.opcionesView(productos)
     def menuAdmin(self):
         self.__maquinaView.opcionesAdmin()
 
@@ -35,14 +34,14 @@ class Interfaz:
         opcion = True
         while(opcion):
             os.system('cls')
-            self.menuUsuario()
+            self.menuUsuario(self.__maquinaController.verProductos())
             op = input("N Opcion / $dinero: ")
             opcion1 = True
             if (self.__maquinaController.comprobarInt(op)):
-                if (self.__maquinaController.existeOpcion(op)):
+                if (self.__maquinaController.existeOpcion(op,self.__maquinaController.verProductos())):
                     os.system('cls')
                     cantidad = int(input('seleccione la cantidad a comprar: '))
-                    self.__maquinaController.realizarCompra(op,cantidad)
+                    self.__maquinaController.realizarCompra(op,cantidad,self.__maquinaController.verProductos())
                     d = input("\nOprime ENTER para continuar ...")
                 elif (int(op) in self.__maquinaController.dineroAdmitido()):
                     os.system('cls')

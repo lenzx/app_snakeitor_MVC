@@ -22,6 +22,8 @@ class MaquinaController:
             return print('cambio realizado')
         else:
             return 'error en el monto'
+    def verProductos(self):
+        return self.__productoController.verProductos()
     def modificarSaldo(self,producto,cantidad):
         saldo_actual = self.__maquina.getSaldo()
         precio_producto = producto.getPrecio()*cantidad
@@ -50,19 +52,20 @@ class MaquinaController:
         else:
             return False
         
-    def existeOpcion(self,opcion):
+    def existeOpcion(self,opcion,productos):
         try:
-            productos = self.__productoController.verProductos()
             productos[int(opcion)-1]
             return True
         except:
             return False
-    def realizarCompra(self,opcion,cantidad):
-        productos = self.__productoController.verProductos()
+    def realizarCompra(self,opcion,cantidad,productos):
         productoSelecionado = productos[int(opcion)-1]
+        print(productoSelecionado.getNombre(),productoSelecionado.getStock())
+        nuevo_Stock = productoSelecionado.getStock()-int(cantidad)
+        productoSelecionado.setStock(nuevo_Stock)
         self.modificarSaldo(productoSelecionado,cantidad)
+        self.__productoController.actualizarProductos(productoSelecionado.getId(),productoSelecionado.getNombre(),productoSelecionado.getPrecio(),productoSelecionado.getStock())
         self.__ventaController.agregarVenta(productoSelecionado,cantidad)
-        self.__productoController.actualizarProductos(productoSelecionado.getId(),productoSelecionado.getNombre(),productoSelecionado.getPrecio(),productoSelecionado.getStock()-cantidad)
 
 
 

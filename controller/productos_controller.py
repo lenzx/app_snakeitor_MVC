@@ -19,8 +19,7 @@ class ProductoController:
             return print('error en los datos')
         
     def verProductos(self):
-        productos = self.__producto.verProductos()
-        return productos
+        return self.__producto.verProductos()
     
     def actualizarProductos(self,id,nombre,precio,stock):
         if (self.comprobarInt(id),self.comprobarString(nombre),self.comprobarInt(precio),self.comprobarInt(stock)):

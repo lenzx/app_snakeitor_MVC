@@ -12,8 +12,8 @@ class VentasController:
         self.__venta = Venta(None,None,None,None,None)
     def agregarVenta(self, producto, cantidad,):
         if type(producto.getId() == int and producto.getPrecio() == int):
-            total = producto.getPrecio() * cantidad
-            venta = Venta(0,producto.getId(),datetime.now(), cantidad, total)
+            total = producto.getPrecio() * int(cantidad)
+            venta = Venta(0,producto.getId(),datetime.now(), int(cantidad), total)
             self.__venta.agregarVenta(venta)
             return print('venta agregada')
         else:

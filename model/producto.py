@@ -55,6 +55,7 @@ class Producto(DB):
                 print("No hay habitacion en la base de datos")
         except Exception as e:
             print("Error: ", e.args)
+            d = input('asdasddsadas')
     
     def actualizarProducto(self,producto):
         val = (producto.getNombre(),producto.getPrecio(), producto.getStock(),producto.getId(),)

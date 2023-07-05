@@ -24,8 +24,8 @@ class ProductoView:
         cadena =''
         for i in productos:
             if (saldo >= i.getPrecio()):
-                cadena = cadena + ("[ "+ str(productos.index(i)+1)+" ] [x] ").ljust(10," ")+(i.getNombre()).ljust(53," ")+"$ "+str(i.getPrecio())+ "\n"
+                cadena = cadena + ("[ "+ str(productos.index(i)+1)+" ] [x] ").ljust(10," ")+(i.getNombre()).ljust(53," ")+"$ "+str(i.getPrecio())+'  '+str(i.getStock())+ "\n"
             else:
-                cadena = cadena + ("[ "+ str(productos.index(i)+1)+" ] [-] ").ljust(10," ")+(i.getNombre()).ljust(53," ")+"$ "+str(i.getPrecio())+ "\n"
+                cadena = cadena + ("[ "+ str(productos.index(i)+1)+" ] [-] ").ljust(10," ")+(i.getNombre()).ljust(53," ")+"$ "+str(i.getPrecio())+'  '+str(i.getStock())+ "\n"
         print(cadena)
 
