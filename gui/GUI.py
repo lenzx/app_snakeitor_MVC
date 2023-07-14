@@ -20,6 +20,8 @@ class Interfaz:
         self.__productoView = ProductoView()
         self.__ventaView = VentasView()
         self.__maquinaController = MaquinaController()
+        self.__productoController = ProductoController()
+        self.__ventaController = VentasController()
         self.inicia()
     def menuUsuario(self,productos):
         self.__maquinaView.tituloView()
