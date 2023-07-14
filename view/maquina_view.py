@@ -40,3 +40,4 @@ class MaquinaView:
         print('[ 1 ] Agregar Producto')
         print('[ 2 ] Ver productos')
         print('[ 3 ] Ver ventas')
+        print('[ 4 ] Agregar Usuario')
