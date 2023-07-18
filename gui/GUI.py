@@ -72,11 +72,11 @@ class Interfaz:
                                         d = input("\nOprime ENTER para continuar ...")
                                     elif int(op) == 2:
                                         os.system('cls')
-                                        self.__ventaView.ventasView(self.__mainController.verVentas())
+                                        self.__ventaView.ventasView(self.__mainController.verProductos())
 
                                     elif int(op) == 3:
                                         os.system('cls')
-                                        self.__productoView.productosView(self.__mainController.verProductos())
+                                        self.__productoView.productosView(self.__mainController.verVentas())
                                     elif int(op) == 4:
                                         os.system('cls')
                                         new_usuario = input('nombre de usuario')
