@@ -41,3 +41,4 @@ class MaquinaView:
         print('[ 2 ] Ver productos')
         print('[ 3 ] Ver ventas')
         print('[ 4 ] Agregar Usuario')
+        print('[ 5 ] Cambiar Contraseña')

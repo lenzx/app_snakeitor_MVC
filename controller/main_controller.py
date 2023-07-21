@@ -18,7 +18,12 @@ class MainController:
         self.__productoController = ProductoController()
         self.__ventaController = VentasController()
         self.__usuarioController = UsuarioController()
+        self.__usuario = object()
     
+    def cambiarContraseña(self,nuevaContraseña):
+        usuarioActual = self.__usuario
+        self.__usuarioController.modificarUsuario(usuarioActual.getUsuario(),
+        usuarioActual.getPassword(),usuarioActual.getUsuario(),nuevaContraseña)
     def verProductos(self):
         productos = self.__productoController.verProductos()
         return productos
@@ -60,12 +65,11 @@ class MainController:
         usuarios = self.__usuarioController.verUsuario()
         for x in usuarios:
             if (x.getUsuario()==usuario and check_password_hash(x.getPassword(),password)):
+                self.__usuario = x
                 return True
         return False
-    
     def agregarProducto(self,nombre,precio,stock):
         self.__productoController.agregarProducto(nombre,precio,stock)
-
     def agregarUsuario(self,usuario,password):
         nuevo_usuario = self.__usuarioController.agregarUsuario(usuario,password)
     

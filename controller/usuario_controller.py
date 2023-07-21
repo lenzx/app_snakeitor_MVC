@@ -26,11 +26,13 @@ class UsuarioController:
     def modificarUsuario(self,user,password,newUser,newPassword):
         usuarios = self.verUsuario()
         for x in usuarios:
-            if (x.getUsuario() == user and x.getPassword() ==password ):
+            if (x.getUsuario() == user and x.getPassword()==password):
                 x.setUsuario(newUser)
-                x.setPassword(newPassword)
+                x.setPassword(generate_password_hash(newPassword))
                 self.__usuario.actualizarUsuario(x)
 
     def eliminarUsuario(self,id):
         usuario = self.verUsuarioId(id)
         self.__usuario.eliminarUsuario(usuario)
+
+

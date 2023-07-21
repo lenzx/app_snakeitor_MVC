@@ -80,8 +80,12 @@ class Interfaz:
                                     elif int(op) == 4:
                                         os.system('cls')
                                         new_usuario = input('nombre de usuario')
-                                        new_paswword = input('paswword')
+                                        new_paswword = input('password')
                                         self.__mainController.agregarUsuario(new_usuario,new_paswword)
+                                    elif int(op) == 5:
+                                        os.system('cls')
+                                        new_paswword = input('password')
+                                        self.__mainController.cambiarContraseña(new_paswword)
 
                                 
                                 else: 
