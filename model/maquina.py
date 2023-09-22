@@ -6,6 +6,9 @@ root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(root_dir)
 from database.database import DB
 
+
+
+
 class Maquina(DB):
     def __init__(self,saldo,dinero_admitido = [50,100,500,1000,2000]):
         super().__init__()
